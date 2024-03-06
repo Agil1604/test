@@ -196,57 +196,6 @@ class DB:
         return target
 
 
-# example of using
-async def test():
-    await DB.create_tables()
-
-    await DB.add_user(123, 113)
-    await DB.add_user(124, 114)
-    await DB.add_user(125, 115)
-    await DB.select_users()
-
-    await DB.add_video("cat", "youtube")
-    await DB.add_video("dog", "youtube")
-    await DB.add_video("fail", "youtube")
-    await DB.select_videos()
-    
-    await DB.add_playlist("agil")
-    await DB.add_playlist("amirov")
-    await DB.add_playlist("roma")
-    await DB.update_playlist(2, "agility")
-
-    await DB.add_playlist_user(1, 1)
-    await DB.add_playlist_user(2, 1)
-    await DB.add_playlist_user(1, 2)
-    await DB.add_playlist_user(3, 3)
-    print()
-    await DB.get_subscribed_users(1)
-    
-    await DB.add_playlist_video(1, 1)
-    await DB.add_playlist_video(1, 2)
-    await DB.add_playlist_video(1, 3)
-    await DB.add_playlist_video(2, 1)
-    await DB.add_playlist_video(2, 2)
-    await DB.add_playlist_video(2, 3)
-    await DB.add_playlist_video(3, 1)
-    await DB.add_playlist_video(3, 2)
-    await DB.add_playlist_video(3, 3)
-    print()
-    await DB.get_all_videos(2)
-
-    await DB.get_id_of_user(124, 114)
-
-    await DB.get_id_of_video("cat")
-
-    await DB.get_id_of_playlist("roma")
-
-    await DB.delete_user(123, 113)
-    await DB.delete_video("cat")
-    
-    await DB.delete_playlist("roma")
-    await DB.delete_playlist_video(1, 2)
-
-
 if __name__ == '__main__':
     load_dotenv()
     db_host = os.getenv('DB_HOST')
@@ -261,4 +210,3 @@ if __name__ == '__main__':
     )
     async_session_factory = async_sessionmaker(async_engine)
 
-    asyncio.run(test())
